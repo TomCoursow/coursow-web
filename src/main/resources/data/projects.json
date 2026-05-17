@@ -1,0 +1,89 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Multi-Node Landing Page Backend & AB-Test System",
+      "company": "Innogames GmbH",
+      "description": "Entwicklung eines neuen Multi-Node Landing-Page und User-Acquisition Backends (Jakarta & Grizzly), eines AB-Test-Systems, neuer E-Mail-Registrierung/Bestätigung und eines Web-Admin-Tools. Durchführung der Migration von Legacy-Systemen, Optimierung der Architektur und Verbesserung der Transaktionskontrolle sowie der Pre-Request-Filter.",
+      "titleColorClass": "card-title-purple",
+      "technologies": [
+        { "name": "Java", "colorClass": "tech-tag-purple" },
+        { "name": "Jakarta", "colorClass": "tech-tag-blue" },
+        { "name": "Grizzly", "colorClass": "tech-tag-green" },
+        { "name": "JDBI", "colorClass": "tech-tag-yellow" },
+        { "name": "Hibernate", "colorClass": "tech-tag-purple" },
+        { "name": "Docker", "colorClass": "tech-tag-blue" },
+        { "name": "Jenkins", "colorClass": "tech-tag-green" },
+        { "name": "pgSQL", "colorClass": "tech-tag-yellow" }
+      ],
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "name": "PSD2 & Zahlungssicherheitssysteme",
+      "company": "Comdirect (Commerzbank AG)",
+      "description": "Entwicklung und Wartung der gesetzlichen PSD2 (XS2A) Schnittstelle und neuer Sicherheitsmechanismen zur Risikobewertung für Zahlungstransaktionen. Zu den wichtigsten Beiträgen gehören PSD2-Echtzeit-Überweisungen, Verbesserungen bei Daueraufträgen und Aktualisierungen des Finanzstatus von Kunden.",
+      "titleColorClass": "card-title-pink",
+      "technologies": [
+        { "name": "Java", "colorClass": "tech-tag-red" },
+        { "name": "Spring", "colorClass": "tech-tag-gray" },
+        { "name": "Hibernate", "colorClass": "tech-tag-indigo" },
+        { "name": "Maven", "colorClass": "tech-tag-red" },
+        { "name": "Oracle", "colorClass": "tech-tag-gray" },
+        { "name": "REST", "colorClass": "tech-tag-indigo" },
+        { "name": "C", "colorClass": "tech-tag-red" },
+        { "name": "PlSQL", "colorClass": "tech-tag-gray" }
+      ],
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "name": "Echtzeit-MMO-Server & Client-Entwicklung",
+      "company": "Goodgame Studios",
+      "description": "Entwicklung einer Echtzeit-MMO-Server-Architektur, einschließlich Netzwerkprotokollentwicklung und automatischer Spieledaten-Mapping. Implementierung verschiedener Server- und Client-Funktionen, Durchführung von Performance- & Usability-Refactorings und Verwaltung von Live-Server-Updates.",
+      "titleColorClass": "card-title-blue",
+      "technologies": [
+        { "name": "Java", "colorClass": "tech-tag-teal" },
+        { "name": "Unity3D", "colorClass": "tech-tag-orange" },
+        { "name": "Protobuf", "colorClass": "tech-tag-cyan" },
+        { "name": "Websockets", "colorClass": "tech-tag-teal" },
+        { "name": "pgSQL", "colorClass": "tech-tag-orange" },
+        { "name": "C#", "colorClass": "tech-tag-cyan" }
+      ],
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "name": "Finanzberichte & Haushaltsbuch",
+      "company": "Comdirect (Commerzbank AG)",
+      "description": "Entwicklung von Finanzberichten mit C-Programmierung und Aufbau einer Haushaltsbuch-Funktion. Außerdem beteiligt an der Migration von Legacy PlSQL Stored-Procedures nach Java.",
+      "titleColorClass": "card-title-purple",
+      "technologies": [
+        { "name": "C", "colorClass": "tech-tag-purple" },
+        { "name": "Java", "colorClass": "tech-tag-blue" },
+        { "name": "PlSQL", "colorClass": "tech-tag-green" },
+        { "name": "Oracle", "colorClass": "tech-tag-yellow" }
+      ],
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "name": "Spieleserver-Entwicklung & Administration (Ausbildung)",
+      "company": "InnoGames GmbH (Ausbildung)",
+      "description": "Während meiner Ausbildung konzentrierte ich mich auf die Java-Spieleserver-Entwicklung, entitätsbasierte Datenmodellierung mit Hibernate & Jackson, Datenbankmigration mit Liquibase und Websocket-Netzwerke. Außerdem entwickelte ich Server-Lasttest-Simulationstools und verwaltete die Jenkins-Administration sowie Live-Server-Bereitstellungen.",
+      "titleColorClass": "card-title-pink",
+      "technologies": [
+        { "name": "Java", "colorClass": "tech-tag-red" },
+        { "name": "Hibernate", "colorClass": "tech-tag-gray" },
+        { "name": "Jackson", "colorClass": "tech-tag-indigo" },
+        { "name": "Liquibase", "colorClass": "tech-tag-red" },
+        { "name": "Websockets", "colorClass": "tech-tag-gray" },
+        { "name": "Apache Tomcat", "colorClass": "tech-tag-indigo" },
+        { "name": "Spring", "colorClass": "tech-tag-red" },
+        { "name": "Jenkins", "colorClass": "tech-tag-gray" },
+        { "name": "pgSQL", "colorClass": "tech-tag-indigo" }
+      ],
+      "link": "#"
+    }
+  ]
+}

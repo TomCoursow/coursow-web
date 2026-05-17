@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom-Henry Coursow - Persönliche Webseite</title>
+    <link rel="stylesheet" th:href="@{css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-950 text-gray-100 font-inter">
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main class="main-content">
+    <th:block th:replace="${content}"></th:block>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

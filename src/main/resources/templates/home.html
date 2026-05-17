@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::mainSlot})}">
+<body>
+<div th:fragment="mainSlot">
+    <div th:replace="~{fragments/home-content :: homeContent(${about}, ${projects}, ${companies})}"></div>
+</div>
+</body>
+</html>

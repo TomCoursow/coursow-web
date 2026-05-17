@@ -1,0 +1,25 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "name": "Innogames GmbH",
+      "timeframe": "Softwareentwickler (Oktober 2022 - Juli 2023)",
+      "description": "Entwicklung eines neuen Multi-Node Landing-Page / User-Acquisition Backends (Jakarta & Grizzly), eines AB-Test-Systems, neuer E-Mail-Registrierung und -Bestätigung sowie eines Landing-Page Web-Admin-Tools. Beteiligung an der schrittweisen Migration von alten zu neuen Systemen, Erweiterung zentraler Legacy-System-Schnittstellen, Docker & Anwendungskonfiguration, Architekturoptimierung, JDBI → Hibernate Refactoring, bessere Transaktionskontrolle und Erweiterung von Pre-Request-Filtern.",
+      "titleColorClass": "card-title-green"
+    },
+    {
+      "id": 2,
+      "name": "Comdirect (Commerzbank AG)",
+      "timeframe": "Softwareentwickler (März 2017 - September 2022)",
+      "description": "Tätig in der Java-Backend-, Frontend- und Batch-Entwicklung (Spring, Hibernate, Maven, Oracle, REST). Verantwortlich für die Entwicklung und Wartung der gesetzlichen PSD2-Schnittstelle (XS2A), neuer Sicherheitsmechanismen zur Risikobewertung für Zahlungstransaktionen und C-Programmierung für Finanzberichte. Beiträge zur Haushaltsbuch-Entwicklung, PSD2-Echtzeit-Überweisungen, Verbesserungen bei Daueraufträgen, Aktualisierungen des Finanzstatus von Kunden und Migration von Legacy PlSQL Stored-Procedures nach Java. Außerdem beteiligt an der Schulung neuer Mitarbeiter.",
+      "titleColorClass": "card-title-yellow"
+    },
+    {
+      "id": 3,
+      "name": "Goodgame Studios",
+      "timeframe": "Java Server & Unity Client Entwickler (Februar 2015 - Februar 2017)",
+      "description": "Entwicklung von Echtzeit-MMO-Server-Architektur, Netzwerkprotokollentwicklung/-generierung und automatisches Protokoll-/Spieldaten-Mapping. Implementierung von Funktionen sowohl für Server als auch Client, Durchführung von Performance- und Usability-Refactorings, Leitung der Sprint-Planung und Verwaltung von Live-Server-Updates/Wartung.",
+      "titleColorClass": "card-title-green"
+    }
+  ]
+}

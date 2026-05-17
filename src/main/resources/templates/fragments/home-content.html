@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="homeContent(about, projects, companies)">
+
+    <section id="about" class="section-about gradient-bg text-center">
+        <h2 class="about-title">
+            <span th:remove="tag" th:text="${about.titleGreeting}">Hallo, ich bin </span>
+            <span class="about-title-gradient" th:text="${about.nameHighlight}">Tom-Henry Coursow</span>
+        </h2>
+        <p class="about-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span th:text="${about.description}">Ein leidenschaftlicher und ergebnisorientierter Softwareentwickler...</span>
+        </p>
+    </section>
+
+    <section id="projects" class="section-common">
+        <h2 class="section-title-projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-3"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Meine Projekte
+        </h2>
+        <div th:replace="~{fragments/project-cards :: projectCards(${projects})}"></div>
+    </section>
+
+    <section id="companies" class="section-common">
+        <h2 class="section-title-companies">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-3"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M12 22V7"/><path d="M5 22V12"/><path d="M19 22V12"/></svg>
+            Unternehmen, für die ich gearbeitet habe
+        </h2>
+        <div th:replace="~{fragments/company-cards :: companyCards(${companies})}"></div>
+    </section>
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="companyCards(companies)" class="grid-layout-companies">
+    <div class="card-border-gradient" th:each="company : ${companies}">
+        <div class="card-content">
+            <h3 class="card-title-green" th:class="${company.titleColorClass}" th:text="${company.name}">Innogames GmbH</h3>
+            <p class="card-subtitle-gray" th:text="${company.timeframe}">Softwareentwickler (Oktober 2022 - Juli 2023)</p>
+            <p class="card-description" th:text="${company.description}">Beschreibung</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
