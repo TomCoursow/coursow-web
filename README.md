@@ -65,4 +65,4 @@ All portfolio content lives in `src/main/resources/data/` as JSON files.
 
 ## License
 
-MIT
+Apache License 2.0
