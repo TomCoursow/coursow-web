@@ -11,7 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  # Build Spring Boot Thymelead Project with Maven / Java and Run Tests
+  build-maven:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -23,3 +24,26 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B verify --file pom.xml
+
+  # Build the Docker Image and Push to DockerHub
+  build-docker:
+    needs: build-maven
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Image and Push to DockerHub
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USER }}/${{ secrets.DOCKERHUB_PROJECT }}:latest
+            ${{ secrets.DOCKERHUB_USER }}/${{ secrets.DOCKERHUB_PROJECT }}:${{ github.sha }}
+  
