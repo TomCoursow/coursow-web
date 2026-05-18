@@ -63,6 +63,22 @@ src/
 
 All portfolio content lives in `src/main/resources/data/` as JSON files.
 
+## Docker Deployment (Swarm)
+
+### Build
+
+```bash
+docker build -t tom-coursow/coursow-web:latest .
+```
+
+### Deploy to Swarm
+
+```bash
+docker stack deploy -c docker-stack.yml coursow
+```
+
+The stack runs 2 replicated instances behind a health check, with rolling updates (start-first) and automatic rollback on failure. The service is exposed on port `8080`. See `docker-stack.yml` for all tuning parameters.
+
 ## License
 
 Apache License 2.0
