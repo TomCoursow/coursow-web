@@ -63,13 +63,21 @@ src/
 
 All portfolio content lives in `src/main/resources/data/` as JSON files.
 
-## Docker Deployment (Swarm)
+## Docker
 
 ### Build
 
 ```bash
 docker build -t tom-coursow/coursow-web:latest .
 ```
+
+### Run (standalone)
+
+```bash
+docker run -d -p 8080:8080 --name coursow-web tom-coursow/coursow-web:latest
+```
+
+Opens the app at `http://localhost:8080`.
 
 ### Deploy to Swarm
 
