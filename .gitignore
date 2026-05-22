@@ -35,5 +35,8 @@ build/
 ### Env files ###
 .env*
 
+### Docker secrets (local dev) ###
+secrets/
+
 ### Spring Boot profile configs ###
 application-*.properties

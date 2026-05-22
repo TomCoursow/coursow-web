@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = {de.coursow.web.CoursowWebApplication.class})
+@SpringBootTest
 class HomeControllerTest {
 
     @Autowired
@@ -30,8 +30,10 @@ class HomeControllerTest {
 
         About about = (About) model.getAttribute("about");
         assertNotNull(about);
-        assertEquals("Hallo, ich bin ", about.getTitleGreeting());
-        assertEquals("Tom-Henry Coursow", about.getNameHighlight());
+        assertNotNull(about.getTitleGreeting());
+        assertFalse(about.getTitleGreeting().isBlank());
+        assertNotNull(about.getNameHighlight());
+        assertFalse(about.getNameHighlight().isBlank());
 
         List<Project> projects = (List<Project>) model.getAttribute("projects");
         assertNotNull(projects);

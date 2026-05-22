@@ -3,12 +3,13 @@ package de.coursow.web.repository;
 import tools.jackson.databind.ObjectMapper;
 import de.coursow.web.model.About;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-
 import java.io.IOException;
 import java.io.InputStream;
 
 @Repository
+@Profile("json")
 public class JsonAboutRepository implements AboutRepository {
 
     private static final String ABOUT_PATH = "classpath:data/about.json";

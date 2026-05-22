@@ -4,13 +4,14 @@ import tools.jackson.databind.ObjectMapper;
 import de.coursow.web.model.CompaniesWrapper;
 import de.coursow.web.model.Company;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
 @Repository
+@Profile("json")
 public class JsonCompanyRepository implements CompanyRepository {
 
     private static final String COMPANIES_PATH = "classpath:data/companies.json";

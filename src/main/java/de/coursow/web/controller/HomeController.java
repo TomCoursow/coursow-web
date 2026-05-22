@@ -1,8 +1,8 @@
 package de.coursow.web.controller;
 
-import de.coursow.web.repository.AboutRepository;
-import de.coursow.web.repository.CompanyRepository;
-import de.coursow.web.repository.ProjectRepository;
+import de.coursow.web.service.AboutService;
+import de.coursow.web.service.CompanyService;
+import de.coursow.web.service.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    private final AboutRepository aboutRepository;
-    private final ProjectRepository projectRepository;
-    private final CompanyRepository companyRepository;
+    private final AboutService aboutService;
+    private final ProjectService projectService;
+    private final CompanyService companyService;
 
-    public HomeController(AboutRepository aboutRepository, ProjectRepository projectRepository,
-                          CompanyRepository companyRepository) {
-        this.aboutRepository = aboutRepository;
-        this.projectRepository = projectRepository;
-        this.companyRepository = companyRepository;
+    public HomeController(AboutService aboutService, ProjectService projectService,
+                          CompanyService companyService) {
+        this.aboutService = aboutService;
+        this.projectService = projectService;
+        this.companyService = companyService;
     }
 
     @GetMapping("/home")
     public String homePage(Model model) {
-        model.addAttribute("about", aboutRepository.getAbout());
-        model.addAttribute("projects", projectRepository.getProjects());
-        model.addAttribute("companies", companyRepository.getCompanies());
+        model.addAttribute("about", aboutService.getAbout());
+        model.addAttribute("projects", projectService.getProjects());
+        model.addAttribute("companies", companyService.getCompanies());
         return "home";
     }
 

@@ -1,9 +1,7 @@
 target/
-.git/
+secrets/
+.git
 .gitignore
 *.md
-.env*
-.idea/
-.mvn/
-*.iml
-.DS_Store
+LICENSE
+.dockerignore

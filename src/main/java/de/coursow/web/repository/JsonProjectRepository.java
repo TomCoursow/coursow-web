@@ -4,13 +4,14 @@ import tools.jackson.databind.ObjectMapper;
 import de.coursow.web.model.Project;
 import de.coursow.web.model.ProjectsWrapper;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
 @Repository
+@Profile("json")
 public class JsonProjectRepository implements ProjectRepository {
 
     private static final String PROJECTS_PATH = "classpath:data/projects.json";
