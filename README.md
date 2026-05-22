@@ -9,6 +9,8 @@ See it live at [coursow.de](https://coursow.de).
 - **Java 26** with **Spring Boot 4.0**
 - **Thymeleaf** server-side templating
 - **Maven** build tool
+- **PostgreSQL** with **Spring Data JPA / Hibernate**
+- **MapStruct** for entity-to-VO mapping (zero boilerplate)
 - Custom CSS (dark theme, responsive grid layout)
 
 ## Features
@@ -17,25 +19,29 @@ See it live at [coursow.de](https://coursow.de).
 - Projects showcase with technology tags and GitHub links
 - Timeline-based Companies / Work Experience section
 - Responsive dark-themed design with animated gradients
-- Simple Data-driven content via JSON files (no database required)
+- Data-driven content via PostgreSQL (seeded from JSON on first run)
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+- **Docker** or Podman (for local database and deployment)
+- JDK 26 + Apache Maven (for local development)
 
-- JDK 26
-- Apache Maven
+Three compose files are provided:
+
+| File                     | Purpose                                                           |
+|--------------------------|-------------------------------------------------------------------|
+| `docker-compose.db.yaml` | Standalone PostgreSQL Service to use with local Maven development |
+| `docker-compose.yaml`    | Full stack (PostgreSQL + Web App)                                 |
+| `docker-stack.yml`       | Docker Swarm Stack deployment for production                      |
+
+## Local Development
+
+Build, test, and run directly with Maven. PostgreSQL runs in Docker.
 
 ### Build
 
 ```bash
 mvn clean install
-```
-
-### Run
-
-```bash
-mvn spring-boot:run
 ```
 
 ### Test
@@ -44,48 +50,79 @@ mvn spring-boot:run
 mvn test
 ```
 
+Uses H2 in-memory database automatically.
+
+### Run
+
+Create and Edit `secrets/postgres_password.txt` (gitignored) to change the password.
+
+Make sure that the `POSTGRES_PASSWORD` environment variable is set (as export or in IDE Run Config):
+
+```
+export POSTGRES_PASSWORD=$(cat secrets/postgres_password.txt)
+```
+
+Then run:
+
+```bash
+docker compose -f docker-compose.db.yaml up -d
+mvn spring-boot:run
+```
+
+On first startup, the app seeds itself from the bundled JSON files.
+
+> **Note:** An older JSON-based repository layer (`@Profile("json")`) is also available for scenarios without a database by setting the Spring profile to `json`.
+
+## Deployment
+
+### Run locally (full stack)
+
+```bash
+docker compose up -d
+```
+
+Opens at `http://localhost:8080`.
+
+### Deploy to Swarm
+
+```bash
+echo "<mySecret>" | docker secret create postgres_password -
+docker stack deploy -c docker-stack.yml coursow
+```
+
+The stack includes a **PostgreSQL 17** service (single replica, persistent volume)
+and the **Coursow-Web** app (2 replicated instances, rolling updates).
+
+| Service | Replicas | Port |
+|---|---|---|
+| `postgres` | 1 | internal 5432 |
+| `coursow-web` | 2 | published 8080 |
+
+### Build image
+
+```bash
+docker build -t tom-coursow/coursow-web:latest .
+```
+
 ## Project Structure
 
 ```
 src/
 ├── main/java/de/coursow/web/
 │   ├── CoursowWebApplication.java        # Entry point
+│   ├── bootstrap/DataInitializer.java    # Seeds DB from JSON on first run
 │   ├── controller/HomeController.java    # MVC controller
-│   ├── model/                            # About, Company, Project, Technology
-│   └── repository/                       # JSON-backed data repositories
+│   ├── entity/                           # JPA entities (AboutEntity, CompanyEntity, ...)
+│   ├── mapper/                           # MapStruct mapper interfaces
+│   ├── model/                            # VOs sent to templates
+│   ├── repository/                       # Old JSON-backed repos (fallback)
+│   │   └── jpa/                          # Spring Data JPA repositories
+│   └── service/                          # Business logic layer
 └── main/resources/
     ├── data/                             # about.json, companies.json, projects.json
     ├── static/css/styles.css             # Custom styles
     └── templates/                        # Thymeleaf fragments & pages
 ```
-
-## Configuration
-
-All portfolio content lives in `src/main/resources/data/` as JSON files.
-
-## Docker
-
-### Build
-
-```bash
-docker build -t tom-coursow/coursow-web:latest .
-```
-
-### Run (standalone)
-
-```bash
-docker run -d -p 8080:8080 --name coursow-web tom-coursow/coursow-web:latest
-```
-
-Opens the app at `http://localhost:8080`.
-
-### Deploy to Swarm
-
-```bash
-docker stack deploy -c docker-stack.yml coursow
-```
-
-The stack runs 2 replicated instances behind a health check, with rolling updates (start-first) and automatic rollback on failure. The service is exposed on port `8080`. See `docker-stack.yml` for all tuning parameters.
 
 ## License
 
