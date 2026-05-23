@@ -1,5 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Start Coursow-Web" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="LOGGING_LEVEL" value="DEBUG" />
+    </envs>
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/secrets/postgres_password.env" />
+    </option>
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
     <module name="coursow-web" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="de.coursow.web.CoursowWebApplication" />
