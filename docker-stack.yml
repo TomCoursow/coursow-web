@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   coursow-web:
-    image: tom-coursow/coursow-web:latest
+    image: tomcoursow/coursow-web:latest
     ports:
       - target: 8080
         published: 8080
