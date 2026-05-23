@@ -10,6 +10,7 @@ See it live at [coursow.de](https://coursow.de).
 - **Thymeleaf** server-side templating
 - **Maven** build tool
 - **PostgreSQL** with **Spring Data JPA / Hibernate**
+- **Liquibase** for database schema migrations
 - **MapStruct** for entity-to-VO mapping (zero boilerplate)
 - Custom CSS (dark theme, responsive grid layout)
 
@@ -51,6 +52,8 @@ mvn test
 ```
 
 Uses H2 in-memory database automatically.
+Liquibase is disabled in tests.
+Hibernate's `create-drop` manages the test schema.
 
 ### Run
 
@@ -69,9 +72,17 @@ docker compose -f docker-compose.db.yaml up -d
 mvn spring-boot:run
 ```
 
-On first startup, the app seeds itself from the bundled JSON files.
+On startup, Liquibase applies any pending schema migrations before JPA initializes.
+Then the app seeds itself from the bundled legacy JSON files if the database is empty.
 
 > **Note:** An older JSON-based repository layer (`@Profile("json")`) is also available for scenarios without a database by setting the Spring profile to `json`.
+
+### Adding a new schema migration
+
+Create a new file in `src/main/resources/db/changelog/changes/` with a filename
+that sorts after the existing ones.
+It is picked up automatically via `includeAll`.
+Add the corresponding fields to the JPA entities.
 
 ## Deployment
 
@@ -120,6 +131,9 @@ src/
 │   └── service/                          # Business logic layer
 └── main/resources/
     ├── data/                             # about.json, companies.json, projects.json
+    ├── db/changelog/                     # Liquibase schema migrations
+    │   ├── db.changelog-master.yaml      #   entrypoint (includeAll)
+    │   └── changes/                      #   individual migration files
     ├── static/css/styles.css             # Custom styles
     └── templates/                        # Thymeleaf fragments & pages
 ```
