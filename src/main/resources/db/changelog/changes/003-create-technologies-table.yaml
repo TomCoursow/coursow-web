@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-technologies-table
+      author: tom-coursow
+      preConditions:
+        - onFail: MARK_RAN # Already in PROD when Liquibase was added to the project
+        - not:
+            tableExists:
+              tableName: technologies
+      changes:
+        - createTable:
+            tableName: technologies
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: color_class
+                  type: VARCHAR(255)

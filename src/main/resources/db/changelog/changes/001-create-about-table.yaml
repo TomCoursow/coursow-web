@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-about-table
+      author: tom-coursow
+      preConditions:
+        - onFail: MARK_RAN # Already in PROD when Liquibase was added to the project
+        - not:
+            tableExists:
+              tableName: about
+      changes:
+        - createTable:
+            tableName: about
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title_greeting
+                  type: VARCHAR(255)
+              - column:
+                  name: name_highlight
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT

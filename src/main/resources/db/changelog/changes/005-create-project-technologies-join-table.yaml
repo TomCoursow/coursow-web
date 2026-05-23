@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-create-project-technologies-join-table
+      author: tom-coursow
+      preConditions:
+        - onFail: MARK_RAN # Already in PROD when Liquibase was added to the project
+        - not:
+            tableExists:
+              tableName: project_technologies
+      changes:
+        - createTable:
+            tableName: project_technologies
+            columns:
+              - column:
+                  name: project_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_project_tech_project
+                    references: projects(id)
+              - column:
+                  name: technology_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_project_tech_technology
+                    references: technologies(id)
+        - addPrimaryKey:
+            columnNames: project_id, technology_id
+            tableName: project_technologies
+            constraintName: pk_project_technologies

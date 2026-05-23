@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-projects-table
+      author: tom-coursow
+      preConditions:
+        - onFail: MARK_RAN # Already in PROD when Liquibase was added to the project
+        - not:
+            tableExists:
+              tableName: projects
+      changes:
+        - createTable:
+            tableName: projects
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: company
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: title_color_class
+                  type: VARCHAR(255)
+              - column:
+                  name: link
+                  type: VARCHAR(255)
