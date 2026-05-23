@@ -9,6 +9,7 @@ services:
         protocol: tcp
     environment:
       SERVER_PORT: "8080"
+      LOGGING_LEVEL: INFO
       POSTGRES_URL: jdbc:postgresql://postgres:5432/coursow
       POSTGRES_USER: coursow
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password

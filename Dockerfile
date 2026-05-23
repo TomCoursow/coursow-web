@@ -16,6 +16,7 @@ COPY entrypoint.sh /app/entrypoint.sh
 RUN chown -R coursow:coursow /app
 USER coursow
 ENV SERVER_PORT=8080
+ENV LOGGING_LEVEL=INFO
 HEALTHCHECK --interval=30s --timeout=3s --start-period=15s --retries=3 \
   CMD curl -f http://localhost:${SERVER_PORT}/ || exit 1
 ENTRYPOINT ["/app/entrypoint.sh"]
