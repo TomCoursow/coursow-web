@@ -4,7 +4,7 @@
 <body>
 <div th:fragment="mainSlot">
     <div class="container text-center py-20">
-        <h1 class="text-6xl font-bold gradient-text mb-4">500</h1>
+        <h1 class="text-6xl font-bold gradient-text mb-4" th:text="${status}">500</h1>
         <p class="text-xl text-gray-400 mb-8" th:text="${errorMessage}">Ein Fehler ist aufgetreten.</p>
         <a href="/" class="btn-primary">Zur Startseite</a>
     </div>
