@@ -18,5 +18,5 @@ USER coursow
 ENV SERVER_PORT=8080
 ENV LOGGING_LEVEL=INFO
 HEALTHCHECK --interval=30s --timeout=3s --start-period=15s --retries=3 \
-  CMD curl -f http://localhost:${SERVER_PORT}/ || exit 1
+  CMD curl -f http://localhost:${SERVER_PORT}/actuator/health || exit 1
 ENTRYPOINT ["/app/entrypoint.sh"]
